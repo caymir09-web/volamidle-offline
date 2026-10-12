@@ -6,34 +6,7 @@
 <meta name="theme-color" content="#0e1412">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<script>
-if (location.protocol === 'file:') document.documentElement.classList.add('requires-local-server');
-</script>
-<style>
-html.requires-local-server,
-html.requires-local-server body {
-  min-height: 100%;
-  background: #0e1412;
-  color: #e8e3d5;
-}
-html.requires-local-server body > * {
-  display: none !important;
-}
-html.requires-local-server::before {
-  content: "VÕ LÂM IDLE CẦN CHẠY QUA SERVER\A\AKhông mở index.html trực tiếp bằng cách nhấp đúp.\A\AHãy mở thư mục game và chạy start.bat.\AServer sẽ tự mở game tại http://localhost:8765/.\A\ATrình duyệt không cho trang web tự chạy file .bat.";
-  position: fixed;
-  z-index: 2147483647;
-  inset: 0;
-  display: grid;
-  place-content: center;
-  padding: 32px;
-  background: #0e1412;
-  color: #e8e3d5;
-  font: 16px/1.8 system-ui, sans-serif;
-  text-align: center;
-  white-space: pre-wrap;
-}
-</style>
+<base href="./">
 <link rel="manifest" href="manifest.json">
 <title>Võ Lâm Idle</title>
 <link rel="stylesheet" href="fonts/ibm-plex-mono.css">

@@ -13,6 +13,19 @@ Bấm đúp vào file: start.bat
 Trình duyệt sẽ tự mở `http://localhost:8765/` và game chạy hoàn toàn offline.
 Đóng cửa sổ PowerShell hoặc nhấn `Ctrl+C` trong cửa sổ đó để dừng server.
 
+**Đưa game lên Cloudflare Pages:** upload toàn bộ nội dung thư mục `volamidle-offline`,
+giữ nguyên các thư mục con như `js/`, `fonts/`, `img/`, `fx/`, `music/`, `snd/` và `ui/`.
+Sau khi deploy, trang chủ tự mở `index.html`. Có thể thử
+`/js/core.js` và `/fonts/ibm-plex-mono.css`: hai URL này phải trả về mã nguồn,
+không phải trang HTML. `404.html` giúp Pages báo tệp deploy thiếu thay vì trả nhầm
+`index.html` cho yêu cầu tệp tĩnh.
+
+**Đưa game lên GitHub Pages:** đưa nội dung thư mục này vào thư mục publish của Pages,
+không để nguyên một thư mục game lồng bên trong nếu chọn repository root làm thư mục publish.
+Các tài nguyên dùng đường dẫn tương đối nên hoạt động cả ở URL project dạng
+`https://<user>.github.io/<repository>/`; `.nojekyll` yêu cầu GitHub phục vụ nguyên trạng
+các file tĩnh. Sau khi bật Pages, kiểm tra `<địa chỉ-pages>/js/core.js` phải hiện mã JavaScript.
+
 ** Cách 2 — Chạy trực tiếp không cần server:**
 
 Bấm đúp `index.html`. Game vẫn chạy bình thường, nhưng **âm thanh hiệu ứng (SFX) có thể bị tắt**

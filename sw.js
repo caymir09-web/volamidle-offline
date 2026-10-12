@@ -7,7 +7,8 @@ self.addEventListener('install', e => self.skipWaiting());
 self.addEventListener('activate', e => e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== C && k !== IMG).map(k => caches.delete(k)))).then(() => self.clients.claim())));
 self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
-  const u = new URL(e.request.url); if (u.origin !== location.origin || u.pathname.startsWith('/sb/')) return;   // /sb: cau noi may chu, khong cache
+  const u = new URL(e.request.url), proxyPath = new URL('sb', self.registration.scope).pathname.replace(/\/$/, '');
+  if (u.origin !== location.origin || u.pathname === proxyPath || u.pathname.startsWith(proxyPath + '/')) return;
   if (ASSET.test(u.pathname)) {
     e.respondWith(caches.open(IMG).then(c => c.match(e.request).then(hit => {
       const net = fetch(e.request).then(r => { if (r.ok) c.put(e.request, r.clone()); return r; }).catch(() => hit);
